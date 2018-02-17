@@ -1,0 +1,26 @@
+<datasource-http-settings current="ctrl.current" suggest-url="http://localhost:8080">
+</datasource-http-settings>
+
+<h3 class="page-heading">Mango Automation Details</h3>
+
+<p ng-if="ctrl.current.access === 'direct'">When using direct access, ensure you have CORS setup appropriately in your env.properties file.
+Warning: Your basic authentication credentials or token will be visible to anyone using the Grafana data source!</p>
+
+<p ng-if="ctrl.current.basicAuth">Token authentication is not available when using basic authentication.</p>
+
+<div class="gf-form-group">
+    <div class="gf-form-inline">
+        <gf-form-switch class="gf-form" label="Use JWT token authentication" label-class="width-16" checked="ctrl.current.jsonData.useAuthToken" switch-class="max-width-6"></gf-form-switch>
+    </div>
+</div>
+
+<div class="gf-form-group" ng-if="ctrl.current.jsonData.useAuthToken">
+    <div class="gf-form-inline">
+        <div class="gf-form gf-form--v-stretch">
+            <label class="gf-form-label width-7">Auth token</label>
+        </div>
+        <div class="gf-form gf-form--grow">
+            <textarea rows="7" class="gf-form-input gf-form-textarea" ng-model="ctrl.current.jsonData.authToken" placeholder="" required></textarea>
+        </div>
+    </div>
+</div>
